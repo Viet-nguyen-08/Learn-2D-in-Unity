@@ -20,9 +20,9 @@ public class c : MonoBehaviour
     {
         currentState.UpdateState(this);
     }
-    public void SwitchState(c_base_state c)
+    public void SwitchState(c_base_state state)
     {
-        currentState = c;
+        currentState = state;
         currentState.EnterState(this);
     }
 }
