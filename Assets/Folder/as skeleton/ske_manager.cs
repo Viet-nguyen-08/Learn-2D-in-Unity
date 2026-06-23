@@ -5,7 +5,8 @@ using UnityEngine;
 public class ske_manager : MonoBehaviour
 {
     private float _moveSpeed = 3f;
-    private ske_base_state _currentState;    
+    private ske_base_state _currentState; 
+    private Animator _animator;   
     // getter and setter 
     public float MoveSpeed
     {
@@ -16,6 +17,15 @@ public class ske_manager : MonoBehaviour
     {
         get => _currentState;
         set => _currentState = value;
+    }
+    public Animator Ani
+    {
+        get => _animator;
+        set => _animator = value;
+    }
+    void Awake()
+    {
+        Ani = GetComponent <Animator>();
     }
     void Start()
     {

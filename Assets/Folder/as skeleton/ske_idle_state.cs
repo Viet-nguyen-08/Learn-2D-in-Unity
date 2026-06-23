@@ -4,6 +4,7 @@ public class ske_idle_state : ske_base_state
 {
     public override void EnterState(ske_manager player)
     {
+        player.Ani.SetBool("walk", false);
         Debug.Log("enter idle !");
     }
     public override void UpdateState(ske_manager player)
