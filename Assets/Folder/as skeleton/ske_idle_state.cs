@@ -11,6 +11,7 @@ public class ske_idle_state : ske_base_state
     {
         float h = Input.GetAxisRaw("Horizontal");
         if(h != 0) player.ChangeState(new ske_walk_state());
+        if(Input.GetButtonDown("Jump") && player.IsGrounded) player.ChangeState(new ske_jump_state());
     }
     public override void ExitState(ske_manager player)
     {
