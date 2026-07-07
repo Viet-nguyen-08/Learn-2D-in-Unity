@@ -13,8 +13,6 @@ public class ske_manager : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _groundLayer;
     private bool _isGrounded;
-    public Transform _point;
-    public LayerMask _enemyLayer;
 
 
     // getter and setter 
@@ -27,12 +25,12 @@ public class ske_manager : MonoBehaviour
     public Transform GroundCheck { get => _groundCheck; set => _groundCheck = value; }
     public LayerMask GroundLayer { get => _groundLayer; set => _groundLayer = value; }
     public bool IsGrounded { get => _isGrounded; set => _isGrounded = value;}
-    public Transform PointAt { get => _point; set => _point = value; }
-    public LayerMask EnemyLayer { get => _enemyLayer; set => _enemyLayer = value; }
+    public player_combat Combat { get; private set; }
     void Awake()
     {
         Ani = GetComponent <Animator>();
-        Rig = GetComponent <Rigidbody2D>();        
+        Rig = GetComponent <Rigidbody2D>(); 
+        Combat = GetComponent<player_combat>();       
     }
     void Start()
     {        
@@ -52,14 +50,4 @@ public class ske_manager : MonoBehaviour
         CurrentState = newState;
         CurrentState.EnterState(this);
     }
-    public void Attack()
-    {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(PointAt.position, 0.3f, EnemyLayer);
-        foreach(Collider2D enemy in enemies) enemy.GetComponent<test>().TakeDamage(2);
-    }
-    public void Out()
-    {
-        SwitchState(new ske_idle_state());
-    }
- 
 }
