@@ -52,5 +52,14 @@ public class ske_manager : MonoBehaviour
         CurrentState = newState;
         CurrentState.EnterState(this);
     }
+    public void Attack()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(PointAt.position, 0.3f, EnemyLayer);
+        foreach(Collider2D enemy in enemies) enemy.GetComponent<test>().TakeDamage(2);
+    }
+    public void Out()
+    {
+        SwitchState(new ske_idle_state());
+    }
  
 }
