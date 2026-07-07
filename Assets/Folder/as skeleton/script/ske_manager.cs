@@ -13,50 +13,22 @@ public class ske_manager : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _groundLayer;
     private bool _isGrounded;
+    public Transform _point;
+    public LayerMask _enemyLayer;
 
 
     // getter and setter 
-    public float MoveSpeed
-    {
-        get => _moveSpeed;
-        set => _moveSpeed = value;
-    }
-    public float JumpFoce
-    {
-        get => _jumpFoce;
-        set => _jumpFoce = value;
-    }
+    public float MoveSpeed{get => _moveSpeed; set => _moveSpeed = value;}
+    public float JumpFoce { get => _jumpFoce; set => _jumpFoce = value; }
     public float MoveInput{get => _moveInput; set => _moveInput = value;}
-    public ske_base_state CurrentState
-    {
-        get => _currentState;
-        set => _currentState = value;
-    }
-    public Animator Ani
-    {
-        get => _animator;
-        set => _animator = value;
-    }
-    public Rigidbody2D Rig
-    {
-        get => _rig;
-        set => _rig = value;
-    }
-    public Transform GroundCheck
-    {
-        get => _groundCheck;
-        set => _groundCheck = value;
-    }
-    public LayerMask GroundLayer
-    {
-        get => _groundLayer;
-        set => _groundLayer = value;
-    }
-    public bool IsGrounded
-    {
-        get => _isGrounded;
-        set => _isGrounded = value;
-    }
+    public ske_base_state CurrentState { get => _currentState; set => _currentState = value; }
+    public Animator Ani { get => _animator; set => _animator = value; }
+    public Rigidbody2D Rig { get => _rig; set => _rig = value; }
+    public Transform GroundCheck { get => _groundCheck; set => _groundCheck = value; }
+    public LayerMask GroundLayer { get => _groundLayer; set => _groundLayer = value; }
+    public bool IsGrounded { get => _isGrounded; set => _isGrounded = value;}
+    public Transform PointAt { get => _point; set => _point = value; }
+    public LayerMask EnemyLayer { get => _enemyLayer; set => _enemyLayer = value; }
     void Awake()
     {
         Ani = GetComponent <Animator>();
@@ -64,14 +36,14 @@ public class ske_manager : MonoBehaviour
     }
     void Start()
     {        
-        ChangeState(new ske_idle_state());
+        SwitchState(new ske_idle_state());
     }
     void Update()
     {
         IsGrounded = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
         CurrentState.UpdateState(this);
     }
-    public void ChangeState(ske_base_state newState)
+    public void SwitchState(ske_base_state newState)
     {
         if(CurrentState != null)
         {

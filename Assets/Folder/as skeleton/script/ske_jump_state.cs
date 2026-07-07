@@ -16,7 +16,7 @@ public class ske_jump_state : ske_base_state
     {                
         if(player.Rig.velocity.y < 0) 
         {
-            player.ChangeState(new ske_idle_state());
+            player.SwitchState(new ske_idle_state());
         }
     }
     public override void ExitState(ske_manager player)

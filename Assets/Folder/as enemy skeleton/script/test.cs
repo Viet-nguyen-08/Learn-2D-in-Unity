@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float health = 10f;
     void Start()
     {
         
@@ -13,7 +13,12 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.J)) Debug.Log("Hello World");
         
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log("enemy is " + health + " hp");
+        if(health <= 0f) Debug.Log("enemy is deal");
     }
 }
