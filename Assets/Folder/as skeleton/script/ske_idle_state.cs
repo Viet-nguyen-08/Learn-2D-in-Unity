@@ -12,6 +12,7 @@ public class ske_idle_state : ske_base_state
         if(player.MoveInput != 0) player.SwitchState(new ske_walk_state());
         if(Input.GetButtonDown("Jump") && player.IsGrounded) player.SwitchState(new ske_jump_state());
         if(Input.GetKeyDown(KeyCode.F)) player.SwitchState(new attack_1());
+        if(Input.GetKeyDown(KeyCode.E)) player.SwitchState(new attack_2());
     }
     public override void ExitState(ske_manager player)
     {
