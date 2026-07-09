@@ -18,7 +18,6 @@ public class player_combat : MonoBehaviour
     public void Out()
     {
         AttackFinished = true;
-        Debug.Log("Animation Finished");
     }
 
     private void OnDrawGizmosSelected()

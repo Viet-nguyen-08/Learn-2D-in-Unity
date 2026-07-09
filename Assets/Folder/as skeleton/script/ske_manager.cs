@@ -14,7 +14,6 @@ public class ske_manager : MonoBehaviour
     public LayerMask _groundLayer;
     private bool _isGrounded;
 
-
     // getter and setter 
     public float MoveSpeed{get => _moveSpeed; set => _moveSpeed = value;}
     public float JumpFoce { get => _jumpFoce; set => _jumpFoce = value; }
@@ -25,12 +24,10 @@ public class ske_manager : MonoBehaviour
     public Transform GroundCheck { get => _groundCheck; set => _groundCheck = value; }
     public LayerMask GroundLayer { get => _groundLayer; set => _groundLayer = value; }
     public bool IsGrounded { get => _isGrounded; set => _isGrounded = value;}
-    public player_combat Combat { get; private set; }
     void Awake()
     {
         Ani = GetComponent <Animator>();
-        Rig = GetComponent <Rigidbody2D>(); 
-        Combat = GetComponent<player_combat>();       
+        Rig = GetComponent <Rigidbody2D>();       
     }
     void Start()
     {        
