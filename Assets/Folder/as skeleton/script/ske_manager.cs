@@ -13,6 +13,8 @@ public class ske_manager : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _groundLayer;
     private bool _isGrounded;
+    public float atCoolDown = 4f;
+    private float timer;
 
     // getter and setter 
     public float MoveSpeed{get => _moveSpeed; set => _moveSpeed = value;}
@@ -37,6 +39,8 @@ public class ske_manager : MonoBehaviour
     {
         IsGrounded = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
         CurrentState.UpdateState(this);
+        if(atCoolDown > 0f) timer -= Time.deltaTime;
+
     }
     public void SwitchState(ske_base_state newState)
     {
@@ -46,5 +50,13 @@ public class ske_manager : MonoBehaviour
         }
         CurrentState = newState;
         CurrentState.EnterState(this);
+    }
+    public bool CanAttack()
+    {
+        return timer <= 0f;
+    }
+    public void StartAttackCoolDown()
+    {
+        timer = atCoolDown;
     }
 }
