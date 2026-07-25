@@ -8,8 +8,9 @@ public class player_combat_2 : MonoBehaviour
     [SerializeField] private LayerMask layer;
     [SerializeField] private int damage = 4;
     [SerializeField] private float radius;
-    
-    public void Damage()
+    private Animator ani;
+
+    void Damage()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(point.position, radius, layer);
         foreach(Collider2D enemy in enemies) enemy.GetComponent<test>().TakeDamage(damage);
