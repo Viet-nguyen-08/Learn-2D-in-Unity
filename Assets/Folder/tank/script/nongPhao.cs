@@ -5,6 +5,10 @@ using UnityEngine;
 public class nongPhao : MonoBehaviour
 {
     [SerializeField] private int rotationSpeed;
+    public GameObject effect;
+    public Transform point;
+    public GameObject at;
+    public Transform pointA;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +39,12 @@ public class nongPhao : MonoBehaviour
 
         // Gán rotation mới
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject cloneEffect = Instantiate(effect, point.position, point.rotation);
+            Destroy(cloneEffect, 1f);
+            GameObject cloneAt = Instantiate(at, pointA.position, pointA.rotation);
+            Destroy(cloneAt, 4f);
+        }
     }
 }
