@@ -661,7 +661,7 @@ Rigidbody2D:
   m_LinearDrag: 10.63
   m_AngularDrag: 17.14
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9dc9503324cea1a4f9bafa22c8a8fb52, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -729,8 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68d8a52d65b4ec4fb0767a17a1e0b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 200
 --- !u!4 &257829631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1121872413301714035, guid: c07970508ecd7674ca1d15172c14f34a, type: 3}
@@ -1260,6 +1258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463004693}
   - component: {fileID: 463004692}
+  - component: {fileID: 463004694}
   m_Layer: 0
   m_Name: Copilot_20260724_011734_3
   m_TagString: Untagged
@@ -1334,6 +1333,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463004694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463004691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68d8a52d65b4ec4fb0767a17a1e0b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &499217851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10200,9 +10211,9 @@ SceneRoots:
   - {fileID: 1190299626541071288}
   - {fileID: 833804907}
   - {fileID: 309376287}
-  - {fileID: 463004693}
   - {fileID: 645971000}
   - {fileID: 1628796239}
   - {fileID: 5553427306780373554}
   - {fileID: 534653209}
   - {fileID: 251958163}
+  - {fileID: 463004693}
