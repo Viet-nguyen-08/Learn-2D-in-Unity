@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-    public float speed = 3f;
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
-
+    public float speed;
+    private Transform target;
+    public float dis;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        InvokeRepeating(nameof(ChangeDirection), 0f, 2f);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
-    void FixedUpdate()
+    void Update()
     {
-        Vector2 direction = transform.up;
-        rb.velocity = direction * moveInput * speed;
-    }
-    void ChangeDirection()
-    {
-        float horizontal = Random.Range(-1, 2); // -1, 0, 1
-        float vertical = Random.Range(-1, 2); 
-        moveInput = new Vector2(horizontal, vertical).normalized;
-        float rotate = Random.Range(0, 90);
+        if(Vector2.Distance(transform.position, target.position) > dis)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        } 
+        // Tính toán hướng từ Enemy đến Player
+        Vector2 direction = target.position - transform.position;
+        // Xoay đối tượng hướng về phía Player
+        // Nếu sprite của bạn mặc định hướng lên trên hoặc sang phải,
+        // bạn có thể cần điều chỉnh góc xoay thêm (ví dụ -90f hoặc 90f)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle -90);
         
     }
 }
