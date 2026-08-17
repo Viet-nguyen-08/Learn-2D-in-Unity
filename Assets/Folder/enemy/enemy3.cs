@@ -1,31 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class enemy3 : MonoBehaviour
 {
-    private Vector2 _pointA, _pointB;
-    private baseState3 _currentState;
+    [Header("Movement")]
+    public float moveSpeed = 3f;
+    public float moveDistance = 3f;
+    [Header("Rotation")]
+    public float rotationSpeed = 180f;
+    [Header("State")]
+    public baseState3 currentState;
+    public posState3 posState;
+    public rotaState3 rotaState;
+    public Vector2 targetPosition;
+    public float targetRotation;
 
-    // getter and setter 
-    public Vector2 PointA{get => _pointA; set => _pointA = value;}
-    public Vector2 PointB{get => _pointB; set => _pointB = value;}
-    public baseState3 CurrentState{get => _currentState; set => _currentState = value;}
+    void Awake()
+    {
+        posState = new posState3(this);
+        rotaState = new rotaState3(this);
+    }
 
     void Start()
     {
-        SwitchState(new posState3());
+        ChangeState(posState);
     }
 
 
     void Update()
     {
-        CurrentState.UpdateState(this);
+        currentState?.UpdateState();
     }
-    public void SwitchState(baseState3 state)
+    public void ChangeState(baseState3 newState)
     {
-        if(CurrentState != null) CurrentState.ExitState(this);
-        CurrentState = state;
-        CurrentState.EnterState(this);
+        currentState?.ExitState();
+        currentState = newState;
+        currentState.EnterState();
     }
+
 }

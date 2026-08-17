@@ -1,6 +1,11 @@
 public abstract class baseState3 
 {
-    public abstract void EnterState(enemy3 enemy);
-    public abstract void UpdateState(enemy3 enemy);
-    public abstract void ExitState(enemy3 enemy);
+    protected enemy3 enemy;
+    public baseState3(enemy3 enemy)
+    {
+        this.enemy = enemy;
+    }
+    public abstract void EnterState();
+    public abstract void UpdateState();
+    public abstract void ExitState();
 }

@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class posState3 : baseState3
 {
-    public override void EnterState(enemy3 enemy)
+    public posState3(enemy3 enemy) : base(enemy)
+    {        
+    }
+    
+    public override void EnterState()
     {
-        enemy.PointA = enemy.transform.position;
-        enemy.PointB = new Vector2(Random.Range(-12f, 12f), Random.Range(-12f, 12f));
+        Vector2 forward = enemy.transform.up;
+        float distance = Random.Range(enemy.moveDistance * 0.5f, enemy.moveDistance);
+        enemy.targetPosition = (Vector2)enemy.transform.position + forward * distance;
     }
-    public override void UpdateState(enemy3 enemy)
+    public override void UpdateState()
     {
-        Debug.Log(enemy.PointA);
-        Debug.Log(enemy.PointB);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.targetPosition, enemy.moveSpeed * Time.deltaTime);
+        float distance = Vector2.Distance(enemy.transform.position, enemy.targetPosition);
+        if(distance < 0.05f) enemy.ChangeState(enemy.rotaState);
     }
-    public override void ExitState (enemy3 enemy){
-
-    }
+    public override void ExitState ()
+    {
+        
+    }    
 }
